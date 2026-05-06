@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.header-img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.card-info {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    background: #fff;
+}
+.card-info:hover {
+    transform: translateY(-10px);
+}
+
+.btn-custom {
+    border-radius: 30px;
+    padding: 10px 25px;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+</style>
+
+<div class="container py-5 fade-in">
+
+    <!-- IMAGE PRINCIPALE -->
+    {% if activity.image %}
+        <img src="{{ activity.image.url }}" class="header-img shadow">
+    {% else %}
+        <img src="https://via.placeholder.com/1200x400" class="header-img shadow">
+    {% endif %}
+
+    <!-- TITRE -->
+    <div class="text-center mt-4">
+        <h1 class="fw-bold">{{ activity.title }}</h1>
+        <p class="text-muted">Publié par UJEB</p>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="section">
+        <div class="card p-4 shadow">
+            <h4>Description</h4>
+
+            {% if activity.description %}
+                <p>{{ activity.description }}</p>
+            {% else %}
+                <p class="text-muted">Aucune description disponible.</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <!-- INFOS -->
+    <div class="section row text-center">
+
+        <div class="col-md-4 mb-3">
+            <div class="card card-info shadow p-3">
+                <h5>📍 Lieu</h5>
+                <p>{{ activity.location|default:"Non précisé" }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card card-info shadow p-3">
+                <h5>📅 Date</h5>
+                <p>{{ activity.date|date:"d M Y"|default:"Non précisé" }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card card-info shadow p-3">
+                <h5>👥 Participants</h5>
+                <p>{{ activity.participants|default:"Non précisé" }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GALERIE -->
+    {% if activity.image %}
+    <div class="section">
+        <h4 class="mb-3 text-center">Galerie</h4>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img src="{{ activity.image.url }}" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- BOUTONS -->
+    <div class="text-center section">
+
+        <a href="/" class="btn btn-secondary btn-custom">
+            ⬅ Retour
+        </a>
+
+        <a href="https://wa.me/235XXXXXXXX"
+           class="btn btn-success btn-custom ms-2">
+           Participer via WhatsApp
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

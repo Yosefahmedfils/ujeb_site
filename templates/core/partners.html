@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.partner-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
+
+.partner-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.partner-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.partner-logo {
+    max-height: 80px;
+    object-fit: contain;
+    transition: 0.3s;
+}
+
+.partner-card:hover .partner-logo {
+    transform: scale(1.1);
+}
+
+/* ANIMATION APPARITION */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<div class="partner-section">
+
+    <!-- TITRE -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Nos Partenaires</h1>
+        <div class="line"></div>
+        <p class="text-muted">Ils nous accompagnent dans notre mission</p>
+    </div>
+
+    <!-- GRID -->
+    <div class="container">
+        <div class="row justify-content-center">
+
+            {% for partner in partners %}
+            <div class="col-md-3 col-6 mb-4 fade-up">
+
+                <div class="partner-card text-center">
+
+                    {% if partner.logo %}
+                    <img src="{{ partner.logo.url }}" class="partner-logo mb-2">
+                    {% endif %}
+
+                    <h6 class="fw-bold">{{ partner.name }}</h6>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+<!-- SCRIPT ANIMATION -->
+<script>
+window.addEventListener('scroll', function() {
+    let elements = document.querySelectorAll('.fade-up');
+
+    elements.forEach(el => {
+        let position = el.getBoundingClientRect().top;
+        let screen = window.innerHeight;
+
+        if(position < screen - 100){
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="col-md-6 mx-auto">
+
+        <div class="card shadow p-4 text-center">
+
+            {% if success %}
+
+                <!-- MESSAGE SUCCESS -->
+                <h2 class="text-success">✅ Demande envoyée !</h2>
+                <p>Merci pour votre adhésion 🙏</p>
+
+                <a href="/" class="btn btn-success mt-3">
+                    Retour à l'accueil
+                </a>
+
+            {% else %}
+
+                <!-- FORMULAIRE -->
+                <h2 class="mb-4">Rejoindre UJEB</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <input type="text" name="full_name" class="form-control mb-3" placeholder="Nom complet" required>
+
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+
+                    <input type="text" name="phone" class="form-control mb-3" placeholder="Téléphone" required>
+
+                    <input type="text" name="city" class="form-control mb-3" placeholder="Ville" required>
+
+                    <textarea name="motivation" class="form-control mb-3" placeholder="Pourquoi rejoindre ?" required></textarea>
+
+                    <button class="btn btn-success w-100">
+                        Envoyer
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="text-center mb-5">Contactez-nous</h1>
+
+    <!-- MESSAGE SUCCESS -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow p-4">
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label>Nom</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Message</label>
+                        <textarea name="message" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <button class="btn btn-success w-100">
+                        Envoyer
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INFOS -->
+    <div class="text-center mt-5">
+        <p>📍 N'djamena, Tchad</p>
+        <p>📞 +235 66 66 66 66</p>
+        <p>✉️ ujeb@email.com</p>
+    </div>
+
+</div>
+
+{% endblock %}
