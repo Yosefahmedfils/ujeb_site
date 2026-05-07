@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- TITRE -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Galerie Photos</h1>
+        <div class="line"></div>
+        <p class="text-muted">
+            Découvrez nos activités en images
+        </p>
+    </div>
+
+    <!-- GALERIE -->
+    <div class="col-md-4 mb-4">
+
+    <div class="gallery-card shadow">
+
+        <a href="{{ activity.image.url }}" data-lightbox="gallery">
+
+            <img src="{{ activity.image.url }}"
+                 class="gallery-img">
+
+        </a>
+
+        <div class="gallery-overlay">
+            <h5>{{ activity.title }}</h5>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

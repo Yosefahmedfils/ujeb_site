@@ -76,3 +76,10 @@ def join(request):
     return render(request, 'core/join.html', {
         'success': success
     })
+
+def gallery(request):
+    activities = Activity.objects.all()
+
+    return render(request, 'core/gallery.html', {
+        'activities': activities
+    })
