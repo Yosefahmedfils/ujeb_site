@@ -68,3 +68,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 WSGI_APPLICATION = 'ujeb_site.wsgi.application'
+
+PYTHON_VERSION = 3.11.9
