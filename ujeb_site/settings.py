@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['ujeb-site.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
