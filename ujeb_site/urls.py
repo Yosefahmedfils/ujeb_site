@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from setuptools.extern import names
 from django.conf import settings
 from django.conf.urls.static import static
 from core.views import home, members_page, partners_page
